@@ -15,8 +15,8 @@ import {
 
 import { Layout } from "../components/Layout";
 import { SkeletonLoader } from "../components/SkeletonLoader";
-import { FilterPopover, defaultFilters } from "../components/Filterpanel";
-import type { FilterState } from "../components/Filterpanel";
+import { FilterPopover, defaultFilters } from "../components/FilterPanel";
+import type { FilterState } from "../components/FilterPanel";
 import styles from "../styles/Users.module.scss";
 import type { UserProfile } from "../types/user";
 import { fetchUsers } from "../services/user.service";
