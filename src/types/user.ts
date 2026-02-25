@@ -44,7 +44,7 @@ export interface UserProfile {
   status: UserStatus;
 
   tier: number;
-  balance: number;
+  balance: string;
   accountNumber: number;
   bankName: string;
 
