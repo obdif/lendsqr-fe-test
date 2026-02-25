@@ -1,0 +1,508 @@
+@use './variables' as *;
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growBar {
+  from { height: 0; }
+}
+
+@keyframes growFill {
+  from { width: 0; }
+}
+
+// ─── Page ───────────────────────────────────────────────
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: $secondary;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $text-main;
+  margin: 0;
+}
+
+// ─── Stat Cards ─────────────────────────────────────────
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.statCard {
+  background: $white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeUp 0.4s ease both;
+
+  @media (max-width: $bp-mobile) {
+    padding: 16px;
+  }
+}
+
+.statTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.colorUsers   { background: rgba(#DF18FF, 0.1); color: #DF18FF; }
+  &.colorActive  { background: rgba($primary, 0.1); color: $primary; }
+  &.colorLoans   { background: rgba($warning, 0.1); color: $warning; }
+  &.colorSavings { background: rgba($danger, 0.1); color: $danger; }
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 20px;
+
+  &.up {
+    background: rgba($success, 0.1);
+    color: $success;
+  }
+  &.down {
+    background: rgba($danger, 0.1);
+    color: $danger;
+  }
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: $secondary;
+  line-height: 1;
+
+  @media (max-width: $bp-mobile) {
+    font-size: 22px;
+  }
+}
+
+.statLabel {
+  font-size: 13px;
+  color: $text-main;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+// ─── Shared Card ────────────────────────────────────────
+.card {
+  background: $white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  @media (max-width: $bp-mobile) {
+    padding: 16px;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: $secondary;
+  margin: 0 0 4px;
+}
+
+.cardSub {
+  font-size: 13px;
+  color: $text-main;
+  margin: 0;
+}
+
+.cardIcon {
+  color: $text-main;
+  opacity: 0.5;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+// ─── Middle Row ──────────────────────────────────────────
+.midRow {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Bar Chart ───────────────────────────────────────────
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+
+  @media (max-width: $bp-mobile) {
+    gap: 5px;
+  }
+}
+
+.barGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+
+.barWrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 100%;
+  background: linear-gradient(180deg, $primary 0%, rgba($primary, 0.4) 100%);
+  border-radius: 4px 4px 0 0;
+  animation: growBar 0.6s ease both;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.barLabel {
+  font-size: 10px;
+  color: $text-main;
+  white-space: nowrap;
+}
+
+// ─── Loan Summary ────────────────────────────────────────
+.loanList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.loanItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.loanLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 110px;
+}
+
+.loanDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &.loanActive  { background: $primary; }
+  &.loanRepaid  { background: $success; }
+  &.loanOverdue { background: $warning; }
+  &.loanDefault { background: $danger; }
+}
+
+.loanLabel {
+  font-size: 13px;
+  color: $text-main;
+}
+
+.loanRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loanValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: $secondary;
+  flex: 0 0 50px;
+  text-align: right;
+}
+
+.loanBar {
+  flex: 1;
+  height: 6px;
+  background: $border-color;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.loanFill {
+  height: 100%;
+  border-radius: 10px;
+  animation: growFill 0.8s ease both;
+
+  &.loanActive  { background: $primary; }
+  &.loanRepaid  { background: $success; }
+  &.loanOverdue { background: $warning; }
+  &.loanDefault { background: $danger; }
+}
+
+.loanPercent {
+  font-size: 12px;
+  color: $text-main;
+  flex: 0 0 30px;
+}
+
+// ─── Recent Users Table ──────────────────────────────────
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: $primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: gap 0.2s;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  &:hover {
+    gap: 10px;
+  }
+}
+
+.tableWrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: $text-main;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px 14px;
+    border-bottom: 1px solid $border-color;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 14px;
+    color: $text-main;
+    border-bottom: 1px solid $border-light;
+    white-space: nowrap;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.clickableRow {
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover td {
+    background: rgba($primary, 0.03);
+  }
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: $secondary;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba($primary, 0.12);
+  color: $primary;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.emailCell {
+  color: $text-main;
+  opacity: 0.8;
+}
+
+// ─── Status Badges ───────────────────────────────────────
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+
+  &.active      { background: $status-active-bg;      color: $status-active-text; }
+  &.inactive    { background: $status-inactive-bg;    color: $status-inactive-text; }
+  &.pending     { background: $status-pending-bg;     color: $status-pending-text; }
+  &.blacklisted { background: $status-blacklisted-bg; color: $status-blacklisted-text; }
+}
+
+// ─── Bottom Row ──────────────────────────────────────────
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Quick Actions ───────────────────────────────────────
+.actionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.actionBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 12px;
+  border: 1.5px solid $border-color;
+  border-radius: 8px;
+  background: $bg-main;
+  color: $secondary;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  svg {
+    color: $primary;
+  }
+
+  &:hover {
+    border-color: $primary;
+    background: rgba($primary, 0.04);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($primary, 0.12);
+  }
+}
+
+// ─── Alerts ──────────────────────────────────────────────
+.alertList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $bg-main;
+  }
+}
+
+.alertDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.alertWarning .alertDot { background: $warning; }
+.alertInfo    .alertDot { background: $primary; }
+.alertDanger  .alertDot { background: $danger; }
+.alertSuccess .alertDot { background: $success; }
+
+.alertTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: $secondary;
+  margin: 0 0 3px;
+}
+
+.alertTime {
+  font-size: 12px;
+  color: $text-main;
+  margin: 0;
+  opacity: 0.7;
+}

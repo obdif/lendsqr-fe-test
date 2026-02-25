@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Users from "./pages/Users";
 import UserDetails from "./pages/UserDetails";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
 
       {/* Pages */}
       <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/users" element={<Users />} />
       <Route path="/users/:id" element={<UserDetails />} />
 

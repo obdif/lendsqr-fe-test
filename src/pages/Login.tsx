@@ -12,8 +12,7 @@ export default function Login() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login and redirect to users dashboard
-    navigate('/users');
+    navigate('/dashboard');
   };
 
   return (
