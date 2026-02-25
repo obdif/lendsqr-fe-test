@@ -1,0 +1,34 @@
+// Lendsqr Color Palette
+$primary: #39CDCC;
+$primary-hover: #2ba8a7;
+$secondary: #213F7D;
+$text-main: #545F7D;
+$bg-main: #FBFBFB;
+$white: #FFFFFF;
+$border-color: rgba(33, 63, 125, 0.1);
+$border-light: rgba(33, 63, 125, 0.06);
+
+// Status Colors
+$status-active-bg: rgba(57, 205, 98, 0.1);
+$status-active-text: #39CD62;
+
+$status-inactive-bg: rgba(84, 95, 125, 0.1);
+$status-inactive-text: #545F7D;
+
+$status-pending-bg: rgba(233, 178, 0, 0.1);
+$status-pending-text: #E9B200;
+
+$status-blacklisted-bg: rgba(228, 3, 59, 0.1);
+$status-blacklisted-text: #E4033B;
+
+// Additional Colors
+$danger: #E4033B;
+$success: #39CD62;
+$warning: #E9B200;
+
+// Typography
+$font-family: 'Work Sans', sans-serif;
+
+// Breakpoints
+$bp-mobile: 768px;
+$bp-tablet: 1024px;

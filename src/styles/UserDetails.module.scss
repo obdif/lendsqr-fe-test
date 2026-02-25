@@ -1,0 +1,235 @@
+// @import './variables';
+@use './variables' as *;
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $text-main;
+  font-size: 16px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $secondary;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+
+  h1 {
+    font-size: 24px;
+    color: $secondary;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 20px;
+
+    button {
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: transparent;
+      transition: all 0.2s;
+
+      &.blacklist {
+        border: 1px solid $danger;
+        color: $danger;
+        
+        &:hover {
+          background: rgba($danger, 0.05);
+        }
+      }
+
+      &.activate {
+        border: 1px solid $primary;
+        color: $primary;
+
+        &:hover {
+          background: rgba($primary, 0.05);
+        }
+      }
+    }
+  }
+}
+
+.profileCard {
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+  padding: 30px 30px 0;
+  margin-bottom: 30px;
+}
+
+.profileTop {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 30px;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba($primary, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .basicInfo {
+    h2 {
+      font-size: 22px;
+      color: $secondary;
+      margin: 0 0 5px;
+      font-weight: 500;
+    }
+    p {
+      margin: 0;
+      color: $text-main;
+      font-size: 14px;
+    }
+  }
+
+  .divider {
+    width: 1px;
+    height: 80px;
+    background: $border-color;
+  }
+
+  .tier {
+    p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: $text-main;
+      font-weight: 500;
+    }
+    .stars {
+      display: flex;
+      gap: 5px;
+      color: $warning;
+      svg { width: 16px; height: 16px; }
+      .filled { fill: $warning; }
+    }
+  }
+
+  .finances {
+    h3 {
+      font-size: 22px;
+      color: $secondary;
+      margin: 0 0 5px;
+      font-weight: 500;
+    }
+    p {
+      margin: 0;
+      color: $secondary;
+      font-size: 12px;
+    }
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+
+  button {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    font-size: 16px;
+    color: rgba(0,0,0,0.8);
+    position: relative;
+    transition: color 0.2s;
+
+    &.active {
+      color: $primary;
+      font-weight: 500;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: -10px;
+        right: -10px;
+        height: 2px;
+        background: $primary;
+      }
+    }
+
+    &:hover:not(.active) {
+      color: $secondary;
+    }
+  }
+}
+
+.detailsContainer {
+  background: $white;
+  border-radius: 4px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+  padding: 30px;
+}
+
+.section {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  h3 {
+    font-size: 16px;
+    color: $secondary;
+    margin: 0 0 30px;
+    font-weight: 500;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    row-gap: 30px;
+
+    @media (max-width: $bp-tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: $bp-mobile) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .field {
+    .label {
+      font-size: 12px;
+      color: $text-main;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .value {
+      font-size: 16px;
+      color: $text-main;
+      font-weight: 500;
+      word-break: break-all;
+    }
+  }
+}

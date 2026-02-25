@@ -1,0 +1,122 @@
+/* ─── Shimmer animation ─── */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e4e4e4 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* ─── Wrapper ─── */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── Stat cards ─── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+}
+
+.label {
+  width: 60%;
+  height: 12px;
+}
+
+.value {
+  width: 40%;
+  height: 22px;
+}
+
+/* ─── Table ─── */
+.tableCard {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 0.8fr 40px;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 4px;
+}
+
+.headerCell {
+  height: 12px;
+  width: 70%;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr 1fr 1.2fr 0.8fr 40px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f9f9f9;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.cell {
+  height: 12px;
+  width: 75%;
+}
+
+.badge {
+  height: 24px;
+  width: 72px;
+  border-radius: 20px !important;
+}
+
+.action {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% !important;
+}

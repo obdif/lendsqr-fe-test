@@ -1,0 +1,151 @@
+// @import './variables';
+@use './variables' as *;
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: $bg-main;
+}
+
+.leftSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  justify-content: center;
+
+  @media (max-width: $bp-tablet) {
+    display: none;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: $secondary;
+  font-size: 24px;
+
+  svg {
+    color: $primary;
+  }
+}
+
+.illustration {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.rightSide {
+  flex: 1;
+  background-color: $white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 100px;
+
+  @media (max-width: $bp-tablet) {
+    padding: 0 40px;
+  }
+}
+
+.formContainer {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  color: $secondary;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.04em;
+}
+
+.subtitle {
+  color: $text-main;
+  font-size: 20px;
+  margin-bottom: 60px;
+}
+
+.inputGroup {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid $border-light;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $text-main;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: rgba($text-main, 0.6);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: $primary;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.forgotPassword {
+  display: block;
+  color: $primary;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  background-color: $primary;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

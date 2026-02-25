@@ -1,0 +1,363 @@
+// @import './variables';
+@use './variables' as *;
+
+.title {
+  font-size: 24px;
+  color: $secondary;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+.statCard {
+  background: $white;
+  border-radius: 4px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0,0,0,0.02);
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  @media (max-width: $bp-mobile) {
+    padding: 20px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  }
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    
+    &.users { background: rgba(223, 24, 255, 0.1); color: #DF18FF; }
+    &.active { background: rgba(87, 24, 255, 0.1); color: #5718FF; }
+    &.loans { background: rgba(245, 95, 68, 0.1); color: #F55F44; }
+    &.savings { background: rgba(255, 51, 102, 0.1); color: #FF3366; }
+  }
+
+  .label {
+    font-size: 14px;
+    color: $text-main;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .value {
+    font-size: 24px;
+    color: $secondary;
+    font-weight: 600;
+  }
+}
+
+.tableContainer {
+  background: $white;
+  border-radius: 4px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+  overflow-x: auto;
+  position: relative;
+
+  @media (max-width: $bp-mobile) {
+    padding: 15px;
+    margin: 0 -20px;
+    border-radius: 0;
+  }
+}
+
+.filterPopover {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  background: $white;
+  border: 1px solid $border-color;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 30px 20px;
+  width: 270px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .filterField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 14px;
+      font-weight: 500;
+      color: $text-main;
+    }
+
+    input, select {
+      height: 40px;
+      padding: 0 12px;
+      border: 1px solid rgba(33, 63, 125, 0.2);
+      border-radius: 8px;
+      font-size: 14px;
+      color: $secondary;
+      outline: none;
+      
+      &::placeholder {
+        color: rgba(84, 95, 125, 0.7);
+      }
+    }
+  }
+
+  .filterActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 14px;
+
+    button {
+      flex: 1;
+      height: 40px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .resetBtn {
+      background: $white;
+      border: 1px solid $text-main;
+      color: $text-main;
+    }
+
+    .filterBtn {
+      background: $primary;
+      border: 1px solid $primary;
+      color: $white;
+    }
+  }
+}
+
+.resultCount {
+  font-size: 14px;
+  color: #545f7d;
+  margin: 0 0 12px 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+
+  th {
+    text-align: left;
+    padding: 15px 0;
+    border-bottom: 1px solid $border-color;
+    font-size: 12px;
+    color: $text-main;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+
+    .headerCell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  td {
+    padding: 20px 0;
+    border-bottom: 1px solid $border-color;
+    font-size: 14px;
+    color: $text-main;
+    
+    &:last-child {
+      text-align: right;
+      padding-right: 20px;
+    }
+  }
+
+  tr {
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: rgba($primary, 0.02);
+    }
+  }
+}
+
+.statusBadge {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+
+  &.Active {
+    background-color: $status-active-bg;
+    color: $status-active-text;
+  }
+  &.Inactive {
+    background-color: $status-inactive-bg;
+    color: $status-inactive-text;
+  }
+  &.Pending {
+    background-color: $status-pending-bg;
+    color: $status-pending-text;
+  }
+  &.Blacklisted {
+    background-color: $status-blacklisted-bg;
+    color: $status-blacklisted-text;
+  }
+}
+
+.actionBtn {
+  background: none;
+  border: none;
+  color: $text-main;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  
+  &:hover {
+    background: rgba(0,0,0,0.05);
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .info {
+    font-size: 14px;
+    color: $text-main;
+    
+    select {
+      background: rgba(33, 63, 125, 0.1);
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      color: $secondary;
+      font-weight: 500;
+      margin: 0 10px;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: $bp-mobile) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    button {
+      background: rgba(33, 63, 125, 0.1);
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $secondary;
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .pageNumbers {
+      display: flex;
+      gap: 10px;
+      
+      span {
+        font-size: 16px;
+        color: $text-main;
+        cursor: pointer;
+        
+        &.active {
+          color: $secondary;
+          font-weight: 500;
+        }
+
+        @media (max-width: $bp-mobile) {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+// Action Menu Popover
+.actionMenu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: $white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px 0;
+  z-index: 100;
+  min-width: 180px;
+
+  button {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: $text-main;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba($primary, 0.05);
+    }
+  }
+}
