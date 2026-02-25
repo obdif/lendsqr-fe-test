@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import { Layout } from "../components/Layout";
-import { SkeletonLoader } from "../components/Skeletonloader";
+import { SkeletonLoader } from "../components/SkeletonLoader";
 import { FilterPopover, defaultFilters } from "../components/Filterpanel";
 import type { FilterState } from "../components/Filterpanel";
 import styles from "../styles/Users.module.scss";
